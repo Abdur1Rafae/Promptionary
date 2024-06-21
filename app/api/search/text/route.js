@@ -4,7 +4,7 @@ import { connectToDB } from "@utils/database";
 export const GET = async(req, {params}) => {
     try {
         await connectToDB()
-        const searchText = params.text
+        const searchText = params.text ?? ''
 
         if(!searchText) {
             return new Response("Search Text not matched", {status: 400})
