@@ -6,8 +6,6 @@ import { useSession } from "next-auth/react";
 import Profile from "@components/Profile";
 
 const UserProfile = ({params}) => {
-
-    const {data: session} = useSession()
     const [posts, setPosts] = useState([])
 
     useEffect(()=>{
@@ -26,7 +24,7 @@ const UserProfile = ({params}) => {
 
 
   return (
-    <Profile name={posts[0].creator.userName} data={posts}/>
+    <Profile name={posts[0]?.creator.userName} data={posts}/>
   )
 }
 

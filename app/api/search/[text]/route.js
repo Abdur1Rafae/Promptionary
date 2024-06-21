@@ -4,8 +4,7 @@ import { connectToDB } from "@utils/database";
 export const GET = async(req, {params}) => {
     try {
         await connectToDB()
-        const {searchParams} = new URL(req.url)
-        const searchText = searchParams.get('searchText')
+        const searchText = params.text
 
         if(!searchText) {
             return new Response("Search Text not matched", {status: 400})
@@ -23,7 +22,7 @@ export const GET = async(req, {params}) => {
         }
         return new Response(JSON.stringify(prompt), {status:200})
     } catch(err) {
-        console.log(err, "ERORRR")
+        console.log(err)
         return new Response("Failed to fetch prompts", {status:500})
     }
 }

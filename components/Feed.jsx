@@ -31,7 +31,7 @@ const Feed = () => {
         }
 
         try {
-          const response = await fetch(`/api/search/text?searchText=${searchText}`);
+          const response = await fetch(`/api/search/${searchText}`);
           if (response.ok) {
             const data = await response.json();
             setPosts(data);
